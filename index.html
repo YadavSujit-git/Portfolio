@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sujit Yadav</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Cambria", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between; /* Space out logo & menu */
+        align-items: center;
+        padding: 1rem 2rem;
+        background: #1e1e1e;
+        color: #fff;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ffcc00;
+        text-decoration: none;
+        margin-left: 40px; /* Set margin to 40px */
+      }
+      
+      nav {
+        display: flex;
+        align-items: center;
+        margin-right: 90px; /* Further adjusted to move the navbar slightly more to the right */
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        display: inline;
+      }
+
+      nav ul li a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        transition: color 0.3s;
+      }
+
+      nav ul {
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      nav ul li a:hover,
+      .active {
+        color: #ffcc00;
+      }
+
+      .hero {
+        height: 90vh; /* Reduced height */
+        display: flex;
+        align-items: center;
+        padding: 80px;
+        background: linear-gradient(to right, rgba(58, 58, 58, 0.8), rgba(30, 30, 30, 0.8));
+        color: #ffffff;
+        position: relative;
+      }
+
+      .hero .content {
+        z-index: 2;
+        max-width: 50%;
+        margin-right: 5%; /* Align content with the frame's edge */
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 5s steps(40, end), blink-caret 0.75s step-end 5;
+      }
+
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: transparent; }
+      }
+
+      .hero h2 {
+        font-size: 4rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .hero p {
+        max-width: 100%;
+        text-align: justify;
+        font-size: 1.2rem;
+      }
+
+      .resume-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        background: #ffcc00;  /* Yellow color */
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .resume-button:hover {
+        background: #e6b800;  /* Darker yellow on hover */
+        color: #ffffff;
+      }
+
+      /* Modern frame style */
+      .frame {
+        width: 25%; /* Adjusted width to make the frame smaller */
+        height: 50%; /* Adjusted height to make the frame smaller */
+        border: 5px solid #ffcc00;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        z-index: 2;
+        margin-right: -5%; /* Move frame slightly to the right */
+        position: absolute;
+        right: 15%; /* Ensure frame is visible */
+        bottom: 20%; /* Shift frame upward */
+      }
+
+      .frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .section {
+        padding: 80px 50px 50px;
+        text-align: center;
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+      }
+
+      .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .skill-box {
+        background: #2e2e2e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        width: 150px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .skill-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.7);
+      }
+
+      .skill-box h3 {
+        font-size: 16px;
+        color: #ffcc00;
+        margin-top: 10px;
+      }
+
+      .skill-box i {
+        font-size: 24px;
+        color: #ffcc00;
+      }
+
+      .projects-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .project {
+        background: #2e2e2e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+        width: 75%;
+        text-align: left;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .project img {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+      }
+
+      .project:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.8);
+      }
+
+      .project h3 {
+        color: #ffcc00;
+      }
+
+      .project p {
+        margin: 5px 0;
+      }
+
+      .github-icon {
+        font-size: 20px;
+        color: #ffcc00;
+        text-decoration: none;
+        margin-left: 10px;
+      }
+
+      .contact-section {
+        padding: 50px;
+        background-color: #1e1e1e;
+        text-align: center;
+        margin-bottom: 5vh; /* Align contact section end with frame */
+      }
+
+      .contact-section h2 {
+        color: #ffcc00;
+      }
+
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .contact-box {
+        background: #2e2e2e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        width: 250px; /* Adjusted width to fit the email ID */
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .contact-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.7);
+      }
+
+      .contact-box h3 {
+        font-size: 16px;
+        color: #ffcc00;
+        margin-top: 10px;
+        word-wrap: break-word; /* Ensure the text wraps within the box */
+      }
+
+      .contact-box i {
+        font-size: 24px;
+        color: #ffcc00;
+      }
+
+      .contact-box a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      .contact-box a:hover {
+        color: #e6b800;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Sujit Yadav</a>
+      <nav>
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="content">
+        <h1>Hello, <br> My name is Sujit</h1>
+        <p>
+          I am a passionate Software Tester with expertise in both automation and
+          manual testing. With hands-on experience in Selenium, API testing, and
+          TestNG, I ensure software quality through rigorous testing
+          methodologies. I specialize in designing and executing test cases,
+          performing functional and regression testing, and identifying defects
+          to maintain high-quality standards. With strong analytical skills and
+          attention to detail, I collaborate with development teams to enhance
+          software reliability. My goal is to deliver efficient, bug-free
+          applications through systematic and efficient testing processes.
+        </p>
+        <a href="resume.pdf" class="resume-button" download>Download Resume</a>
+      </div>
+      <div class="frame">
+        <img src="images/Sujit Yadav photo.png" alt="Your Image" />
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill-box">
+          <i class="fas fa-clipboard-list"></i>
+          <h3>TestCase Design</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-tasks"></i>
+          <h3>Test Planning</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-vial"></i>
+          <h3>Functional Testing</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-sync-alt"></i>
+          <h3>Regression Testing</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-user-secret"></i>
+          <h3>Black Box Testing</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-code"></i>
+          <h3>White Box Testing</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fab fa-java"></i>
+          <h3>Java</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fab fa-js"></i>
+          <h3>JavaScript</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-database"></i>
+          <h3>MySQL</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-robot"></i>
+          <h3>Selenium</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-cogs"></i>
+          <h3>Webdriver</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-check-circle"></i>
+          <h3>TestNG</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-flask"></i>
+          <h3>Postman</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-server"></i>
+          <h3>RestAPI</h3>
+        </div>
+        <div class=" skill-box">
+          <i class="fab fa-jira"></i>
+          <h3>Jira</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-file-excel"></i>
+          <h3>Excel</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fab fa-github"></i>
+          <h3>GitHub</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Strong Analytical</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-brain"></i>
+          <h3>Innovative Mindset</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-puzzle-piece"></i>
+          <h3>Problem Solving</h3>
+        </div>
+        <div class="skill-box">
+          <i class="fas fa-users"></i>
+          <h3>Teamwork</h3>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="projects-container">
+        <div class="project">
+          <img src="images/pro1.jpg" alt="E-Commerce Website Testing" />
+          <div>
+            <h3>E-Commerce Website Testing – eBay.com</h3>
+            <a
+              href="https://github.com/YadavSujit-git/Manual-Testing--01-Ebay.com"
+              target="_blank"
+              class="github-icon"
+              ><i class="fab fa-github"></i
+            ></a>
+            <p>• Achieved 95% test case coverage for key features like product search, checkout, authentication, and payments.</p>
+            <p>• Performed functional, regression, and UI testing, identifying and reporting 98% of defects.</p>
+            <p>• Created test reports, defect logs, and metrics, improving software quality by 90%.</p>
+            <p>  Tools & Technologies: Jira, Excel</p>
+          </div>
+        </div>
+        <div class="project">
+          <img src="images/pro2.jpg" alt="Digital Payment Platform Testing" />
+          <div>
+            <h3>Digital Payment Platform Testing – Dmoney</h3>
+            <a
+              href="https://github.com/YadavSujit-git/Manual-Project--2-Payment-platform"
+              target="_blank"
+              class="github-icon"
+              ><i class="fab fa-github"></i
+            ></a>
+            <p>• Designed and executed test cases covering 90% of payment functionalities.</p>
+            <p>• Conducted functional, regression, and security testing ensuring 97% defect resolution.</p>
+            <p>• Created test reports, defect logs, and metrics improving software quality by 92%.</p>
+            <p>Tools & Technologies: Jira, Excel</p>
+          </div>
+        </div>
+        <div class="project">
+          <img src="images/pro3.jpg" alt="Login Page Automation" />
+          <div>
+            <h3>Automating login-page – Rahul Shetty Academy</h3>
+            <a
+              href="https://github.com/YadavSujit-git/Automation-Project-1-Login-page"
+              target="_blank"
+              class="github-icon"
+              ><i class="fab fa-github"></i
+            ></a>
+            <p>
+              • Achieved 95% test case automation coverage for the login page
+              using Selenium WebDriver.
+            </p>
+            <p>
+              • Developed Java test scripts covering 90% of authentication
+              functionalities.
+            </p>
+            <p>
+              • Ensured 98% functional accuracy and UI consistency through
+              testing.
+            </p>
+            <p>
+              • Conducted cross-browser testing with a 100% pass rate on Chrome,
+              Firefox, and Edge.
+            </p>
+            <p>Tools & Technologies: Selenium WebDriver, Java</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Contact Me</h2>
+      <div class="contact-container">
+        <div class="contact-box">
+          <i class="fas fa-phone-alt"></i>
+          <h3>+91 9137580508</h3>
+        </div>
+        <div class="contact-box">
+          <i class="fas fa-envelope"></i>
+          <h3>sujitsyadav14@gmail.com</h3>
+        </div>
+        <div class="contact-box">
+          <a href="https://www.linkedin.com/in/YadavSujit" target="_blank"
+            ><i class="fab fa-linkedin"></i>
+            <h3>LinkedIn</h3></a>
+        </div>
+        <div class="contact-box">
+          <a href="https://github.com/YadavSujit-git" target="_blank"
+            ><i class="fab fa-github"></i>
+            <h3>GitHub</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
